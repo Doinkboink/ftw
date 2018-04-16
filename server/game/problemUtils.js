@@ -77,9 +77,10 @@ utils.getProblem = function () {
     if (g >= 18 && g < 20) {
         let a = Math.floor(10 * Math.random()) + 1;
         let b = Math.floor(50 * Math.random()) + a;
+        let c = Math.floor(2 * Math.random());
         return {
-            text: "Alex and Bobert take turns taking between 1 and " + a + " sticks from a pile starting from " + b + ". If the last person to take a stick wins, and Alex goes first, who wins?",
-            answer: (b % (a + 1) === 0) ? "Bobert" : "Alex"
+            text: "Alex and Bobert take turns taking between 1 and " + a + " sticks from a pile starting from " + b + ". If the last person to take a stick wins, and " + ((c === 1)?"Alex":"Bobert") + " goes first, who wins?",
+            answer: (b % (a + 1) === 0) ? ((c === 1)?"Alex":"Bobert") : ((c === 1)?"Bobert":"Alex")
         };
     }
     if (g >= 20 && g < 23){
