@@ -7,7 +7,7 @@ Answer must be in the form of a String. This means "" + a, as opposed to just a.
 
 */
 utils.getProblem = function () {
-    let g = Math.floor(22 * Math.random());
+    let g = Math.floor(25 * Math.random());
 
     if (g >= 0 && g < 3) {
         let a = Math.floor(200 * Math.random());
