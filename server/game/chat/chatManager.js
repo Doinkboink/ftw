@@ -9,6 +9,7 @@ class ChatManager {
     constructor() {
         this.users = new Map();
         this.muted = new Set();
+        this.banned = new Set();
     }
     addUser(data, socket) {
         const name = data.username;
@@ -81,7 +82,16 @@ class ChatManager {
                             from: "Ftw Bot",
                             message: parts[1] + " is no longer muted!"
                         });
-                    }
+                    } else if (parts[0] === "ban") {
+                        _self.disconnect(parts[1]);
+                        _self.muted.add(parts[1]);
+                        _self.banned.add(parts[1]);
+                        socket.emit("message", {
+                            type: "public",
+                            from: "Ftw Bot",
+                            message: parts[1] + " has been username banned!"
+                        });
+                    }   
                 }
             } else {
                 console.error(name + " tried executing " + data.command + " with key " + data.key);
